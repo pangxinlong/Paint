@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.example.pangxinlong.paint.paint_view.PaintMagnifierView
+            android:id="@+id/paint_magnifier"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    <com.example.pangxinlong.paint.paint_view.PaintText
+            android:id="@+id/paint_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:text="请在此页面上找到您想要退出计划的设备，然后点击“取消注册”。随后，您的设备会收到 OTA 更新，提示您系统将清除所有用户数据，然后安装运行稳定的 Android 最新公开版。 请先备份您所有的数据再退出计划。未备份的数据将会全部丢失"
+            android:visibility="gone" />
+
+    <com.example.pangxinlong.paint.paint_view.PaintRadarView
+            android:id="@+id/paint_radar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    <com.example.pangxinlong.paint.paint_view.PaintWaterView
+            android:id="@+id/paint_water"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    <com.example.pangxinlong.paint.paint_view.ProgressBar
+            android:id="@+id/paint_pro"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+    <com.example.pangxinlong.paint.paint_view.PaintEraserView
+            android:id="@+id/paint_eraser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+    <com.example.pangxinlong.paint.paint_view.PaintShaveCardView
+            android:id="@+id/paint_shave_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+</RelativeLayout>
