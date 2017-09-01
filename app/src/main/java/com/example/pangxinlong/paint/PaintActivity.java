@@ -19,7 +19,7 @@ import android.view.View;
  * Created by pangxinlong on 2017/8/28.
  */
 
-public class DescriptionActivity extends Activity {
+public class PaintActivity extends Activity {
 
     private PaintMagnifierView mPaintMagnifierView;
 
@@ -35,12 +35,12 @@ public class DescriptionActivity extends Activity {
 
     private PaintShaveCardView mPaintShaveCardView;
 
-    private int tag;
+    private String tag;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_description);
+        setContentView(R.layout.activity_paint);
         initData();
         initView();
     }
@@ -48,7 +48,7 @@ public class DescriptionActivity extends Activity {
 
     private void initData() {
         Intent intent = getIntent();
-        tag = intent.getIntExtra("tag", 0);
+        tag = intent.getStringExtra("tag");
 
     }
 
@@ -61,19 +61,19 @@ public class DescriptionActivity extends Activity {
         mPaintEraserView = (PaintEraserView) findViewById(R.id.paint_eraser);
         mPaintShaveCardView = (PaintShaveCardView) findViewById(R.id.paint_shave_card);
         switch (tag) {
-            case 0:
+            case ViewTag.PAINT_MAGNIFIER:
                 mPaintMagnifierView.setVisibility(View.VISIBLE);
                 break;
-            case 1:
+            case ViewTag.PAINT_WATER:
                 mPaintWaterView.setVisibility(View.VISIBLE);
                 break;
-            case 2:
+            case ViewTag.PAINT_RADAR:
                 mPaintRadarView.setVisibility(View.VISIBLE);
                 break;
-            case 3:
+            case ViewTag.PAINT_TEXT:
                 mPaintText.setVisibility(View.VISIBLE);
                 break;
-            case 4:
+            case ViewTag.PROGRESSBAR:
                 mProgressBar.setVisibility(View.VISIBLE);
                 mProgressBar.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -97,10 +97,10 @@ public class DescriptionActivity extends Activity {
                     }
                 });
                 break;
-            case 5:
+            case ViewTag.PAINT_ERASER:
                 mPaintEraserView.setVisibility(View.VISIBLE);
                 break;
-            case 6:
+            case ViewTag.PAINT_SHAVECARD:
                 mPaintShaveCardView.setVisibility(View.VISIBLE);
                 break;
 
@@ -108,10 +108,10 @@ public class DescriptionActivity extends Activity {
         }
     }
 
-    public static void start(Context context, int position) {
+    public static void start(Context context, String tag) {
         Intent intent = new Intent();
-        intent.putExtra("tag", position);
-        intent.setClass(context, DescriptionActivity.class);
+        intent.putExtra("tag", tag);
+        intent.setClass(context, PaintActivity.class);
         context.startActivity(intent);
     }
 }

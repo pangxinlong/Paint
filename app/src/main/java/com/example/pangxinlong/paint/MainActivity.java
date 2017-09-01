@@ -2,7 +2,6 @@ package com.example.pangxinlong.paint;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -37,20 +36,25 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
         dataList = new ArrayList<>();
-        dataList.add("放大镜(Shader)");
-        dataList.add("水波纹(Shader)");
-        dataList.add("雷达(Shader)");
-        dataList.add("类跑马灯(Shader)");
-        dataList.add("ProgressBar(Shader)");
-        dataList.add("橡皮擦(Xfermode)");
-        dataList.add("刮刮卡(Xfermode)");
+        dataList.add(ViewTag.PAINT_MAGNIFIER);
+        dataList.add(ViewTag.PAINT_WATER);
+        dataList.add(ViewTag.PAINT_RADAR);
+        dataList.add(ViewTag.PAINT_TEXT);
+        dataList.add(ViewTag.PROGRESSBAR);
+        dataList.add(ViewTag.PAINT_ERASER);
+        dataList.add(ViewTag.PAINT_SHAVECARD);
+        dataList.add(ViewTag.CANVAS_SEARCH);
     }
 
     private void setListener() {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DescriptionActivity.start(MainActivity.this, position);
+                if (position < 7) {
+                    PaintActivity.start(MainActivity.this, dataList.get(position));
+                } else {
+                    CanvasActivity.start(MainActivity.this, dataList.get(position));
+                }
             }
         });
     }

@@ -49,15 +49,15 @@ public class PaintShaveCardView extends View {
         super(context, attrs);
         mPaint = new Paint();
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(20);
+        mPaint.setStrokeWidth(40);
         mPaint.setColor(Color.RED);
         mPath = new Path();
         mSrcBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.timg);
 
-        mCoverBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg_black_cover);
+//        mCoverBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bg_black_cover);
         Drawable drawable = getResources().getDrawable(R.drawable.bg_black_cover);
         mCoverBitmap = Bitmap
-                .createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(),
+                .createBitmap(mSrcBitmap.getWidth(), mSrcBitmap.getHeight(),
                         drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
                                 : Bitmap.Config.RGB_565);
         mDstBitmap = Bitmap.createBitmap(mCoverBitmap.getWidth(), mCoverBitmap.getHeight(),
