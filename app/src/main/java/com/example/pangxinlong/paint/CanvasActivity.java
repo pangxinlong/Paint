@@ -1,6 +1,6 @@
 package com.example.pangxinlong.paint;
 
-import com.example.pangxinlong.paint.canvas.SearchView;
+import com.example.pangxinlong.paint.canvas_view.SearchView;
 
 import android.app.Activity;
 import android.content.Context;

@@ -7,3 +7,5 @@ Paint 实现的一些小demo
 5、ProgressBar <br>
 6、橡皮擦 <br>
 7、刮刮卡 <br>
+8、搜索动画 <br>
+

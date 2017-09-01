@@ -1,4 +1,4 @@
-package com.example.pangxinlong.paint.canvas;
+package com.example.pangxinlong.paint.canvas_view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
