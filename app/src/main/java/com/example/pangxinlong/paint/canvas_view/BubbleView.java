@@ -1,16 +1,21 @@
 package com.example.pangxinlong.paint.canvas_view;
 
+import android.animation.Animator;
+import android.animation.PointFEvaluator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PointF;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.OvershootInterpolator;
 
 /**
  * Created by pangxinlong on 2017/9/4.
@@ -25,7 +30,7 @@ public class BubbleView extends View {
 
     private Path mPath;
 
-    private static final float RADIUS = 30;
+    private static final float RADIUS = 20;
 
     private float originalRadius = RADIUS;//原点小圆半径
 
@@ -151,32 +156,70 @@ public class BubbleView extends View {
                     if (centerDistance < separateBoundary) {//在拖拽边界内
                         sinValue = distanceY / centerDistance;
                         cosValue = distanceX / centerDistance;
-                        Log.e("pxl==sinValue", sinValue + "");
-                        Log.e("pxl==cosValue", cosValue + "");
                         float ratio = centerDistance / separateBoundary;
                         originalRadius = Math.max(RADIUS * (1 - ratio), 5);
                     } else {//超出拖拽边界
                         mStatus = STATUS.STATUS_SEPARATE;
                     }
                 }
+                invalidate();
                 break;
             case MotionEvent.ACTION_UP:
                 if (mStatus != STATUS.STATUS_DISAPPEAR) {
                     if (mStatus == STATUS.STATUS_SEPARATE) {//分离状态
                         if (centerDistance < separateBoundary) {//超出边界则还原
                             originalRadius = RADIUS;
-                            mStatus = STATUS.STATUS_STATIC;
+                            resetAnim();
                         } else {//超出边界则爆炸
                             mStatus = STATUS.STATUS_DISAPPEAR;
                         }
                     } else {//否则恢复原状
                         originalRadius = RADIUS;
-                        mStatus = STATUS.STATUS_STATIC;
+                        resetAnim();
                     }
                 }
                 break;
         }
-        invalidate();
         return true;
+    }
+
+    private void resetAnim() {
+        ValueAnimator valueAnimator = ValueAnimator
+                .ofObject(new PointFEvaluator(), new PointF(moveCenterX, moveCenterY),
+                        new PointF(originalCenterX, originalCenterY));
+        valueAnimator.setDuration(200);
+        valueAnimator.setInterpolator(new OvershootInterpolator(3f));
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                PointF pointF = (PointF) animation.getAnimatedValue();
+                moveCenterX = pointF.x;
+                moveCenterY = pointF.y;
+                invalidate();
+            }
+        });
+
+        valueAnimator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mStatus = STATUS.STATUS_STATIC;
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+        valueAnimator.start();
     }
 }
