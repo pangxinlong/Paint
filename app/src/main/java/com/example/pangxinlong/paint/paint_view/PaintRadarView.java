@@ -29,6 +29,7 @@ public class PaintRadarView extends View {
 
     private SweepGradient sweepGradient;
 
+    private int radius=300;
 
     public PaintRadarView(Context context) {
         super(context);
@@ -45,7 +46,6 @@ public class PaintRadarView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         mPaint = new Paint();
         sweepGradient = new SweepGradient(getWidth() / 2, getHeight() / 2, colors, null);
-        mPaint.setShader(sweepGradient);
     }
 
 
@@ -53,6 +53,10 @@ public class PaintRadarView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        canvas.save();
+        //雷达扫描
+        mPaint.reset();
+        mPaint.setShader(sweepGradient);
         degrees += 1;
         if (degrees >= 360) {
             degrees = 0;
@@ -62,7 +66,19 @@ public class PaintRadarView extends View {
         }
         matrix.setRotate(degrees, getWidth() / 2, getHeight() / 2);
         sweepGradient.setLocalMatrix(matrix);
-        canvas.drawCircle(getWidth() / 2, getHeight() / 2, 300, mPaint);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, radius, mPaint);
+
+
+        canvas.restore();
+        //绘制线条
+        mPaint.reset();
+        mPaint.setColor(Color.WHITE);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(1);
+        canvas.drawCircle(getWidth()/2,getHeight()/2,radius-100,mPaint);
+        canvas.drawCircle(getWidth()/2,getHeight()/2,radius-200,mPaint);
+        canvas.drawLine(getWidth()/2,getHeight()/2-radius,getWidth()/2,getHeight()/2+radius,mPaint);
+        canvas.drawLine(getWidth()/2-radius,getHeight()/2,getWidth()/2+radius,getHeight()/2,mPaint);
         invalidate();
     }
 }

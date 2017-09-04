@@ -1,5 +1,6 @@
 package com.example.pangxinlong.paint;
 
+import com.example.pangxinlong.paint.canvas_view.ClipView;
 import com.example.pangxinlong.paint.canvas_view.SearchView;
 
 import android.app.Activity;
@@ -13,10 +14,14 @@ import android.view.View;
  * Created by pangxinlong on 2017/9/1.
  */
 
-public class CanvasActivity extends Activity{
+public class CanvasActivity extends Activity {
 
     private SearchView mSearchView;
+
+    private ClipView mClipView;
+
     private String tag;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,16 +37,20 @@ public class CanvasActivity extends Activity{
     }
 
     private void initView() {
-        mSearchView= (SearchView) findViewById(R.id.canvas_search);
+        mSearchView = (SearchView) findViewById(R.id.canvas_search);
+        mClipView = (ClipView) findViewById(R.id.canvas_clip);
         switch (tag) {
             case ViewTag.CANVAS_SEARCH:
                 mSearchView.setVisibility(View.VISIBLE);
                 mSearchView.startAnim();
                 break;
+            case ViewTag.CANVAS_CLIP:
+                mClipView.setVisibility(View.VISIBLE);
+                break;
         }
     }
 
-    public static void start(Context context,String position){
+    public static void start(Context context, String position) {
         Intent intent = new Intent();
         intent.putExtra("tag", position);
         intent.setClass(context, CanvasActivity.class);

@@ -22,4 +22,6 @@ public class ViewTag {
 
     public static final String CANVAS_SEARCH = "searchView";
 
+    public static final String CANVAS_CLIP="Canvas_clip";
+
 }

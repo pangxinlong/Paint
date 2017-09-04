@@ -7,5 +7,12 @@
     <com.example.pangxinlong.paint.canvas_view.SearchView
             android:id="@+id/canvas_search"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+    <com.example.pangxinlong.paint.canvas_view.ClipView
+            android:id="@+id/canvas_clip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
 </LinearLayout>
