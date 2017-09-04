@@ -10,9 +10,17 @@
             android:layout_height="match_parent"
             android:visibility="gone"/>
 
-    <com.example.pangxinlong.paint.canvas_view.ClipView
-            android:id="@+id/canvas_clip"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"/>
+    <!--<com.example.pangxinlong.paint.canvas_view.ClipView-->
+            <!--android:id="@+id/canvas_clip"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:visibility="gone"/>-->
+
+    <ImageView
+        android:id="@+id/iv_clip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+
 </LinearLayout>
