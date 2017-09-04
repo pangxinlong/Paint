@@ -1,5 +1,6 @@
 package com.example.pangxinlong.paint;
 
+import com.example.pangxinlong.paint.canvas_view.BubbleView;
 import com.example.pangxinlong.paint.canvas_view.ClipView;
 import com.example.pangxinlong.paint.canvas_view.SearchView;
 
@@ -27,6 +28,8 @@ public class CanvasActivity extends Activity {
 
     private ClipView clipView;
 
+    private BubbleView mBubbleView;
+
     private String tag;
 
     @Override
@@ -47,6 +50,7 @@ public class CanvasActivity extends Activity {
         mSearchView = (SearchView) findViewById(R.id.canvas_search);
 //        mClipView = (ClipView) findViewById(R.id.canvas_clip);
         mImageView = (ImageView) findViewById(R.id.iv_clip);
+        mBubbleView = (BubbleView) findViewById(R.id.canvas_bubble);
         switch (tag) {
             case ViewTag.CANVAS_SEARCH:
                 mSearchView.setVisibility(View.VISIBLE);
@@ -59,6 +63,9 @@ public class CanvasActivity extends Activity {
                         getResources().getDrawable(R.mipmap.avft_active));
                 mImageView.setImageDrawable(clipView);
                 initAnim();
+                break;
+            case ViewTag.CANVAS_BUBBLE:
+                mBubbleView.setVisibility(View.VISIBLE);
                 break;
         }
     }

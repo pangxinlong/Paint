@@ -24,4 +24,6 @@ public class ViewTag {
 
     public static final String CANVAS_CLIP="Canvas_clip";
 
+    public static final String CANVAS_BUBBLE="canvas_Bubble(qq气泡)";//气泡
+
 }

@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         dataList.add(ViewTag.PAINT_SHAVECARD);
         dataList.add(ViewTag.CANVAS_SEARCH);
         dataList.add(ViewTag.CANVAS_CLIP);
+        dataList.add(ViewTag.CANVAS_BUBBLE);
     }
 
     private void setListener() {

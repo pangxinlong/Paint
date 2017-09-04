@@ -22,5 +22,10 @@
         android:layout_height="match_parent"
         android:visibility="gone"/>
 
+    <com.example.pangxinlong.paint.canvas_view.BubbleView
+            android:id="@+id/canvas_bubble"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
 
 </LinearLayout>
