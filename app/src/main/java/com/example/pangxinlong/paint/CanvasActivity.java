@@ -3,6 +3,7 @@ package com.example.pangxinlong.paint;
 import com.example.pangxinlong.paint.canvas_view.BubbleView;
 import com.example.pangxinlong.paint.canvas_view.ClipView;
 import com.example.pangxinlong.paint.canvas_view.SearchView;
+import com.example.pangxinlong.paint.canvas_view.SearchView2;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
@@ -21,6 +22,8 @@ import android.widget.ImageView;
 public class CanvasActivity extends Activity {
 
     private SearchView mSearchView;
+
+    private SearchView2 mSearchView2;
 
     private ClipView mClipView;
 
@@ -48,6 +51,7 @@ public class CanvasActivity extends Activity {
 
     private void initView() {
         mSearchView = (SearchView) findViewById(R.id.canvas_search);
+        mSearchView2 = (SearchView2) findViewById(R.id.canvas_search2);
 //        mClipView = (ClipView) findViewById(R.id.canvas_clip);
         mImageView = (ImageView) findViewById(R.id.iv_clip);
         mBubbleView = (BubbleView) findViewById(R.id.canvas_bubble);
@@ -55,6 +59,8 @@ public class CanvasActivity extends Activity {
             case ViewTag.CANVAS_SEARCH:
                 mSearchView.setVisibility(View.VISIBLE);
                 mSearchView.startAnim();
+                mSearchView2.setVisibility(View.VISIBLE);
+                mSearchView2.startAnim();
                 break;
             case ViewTag.CANVAS_CLIP:
 //                mClipView.setVisibility(View.VISIBLE);
@@ -62,7 +68,7 @@ public class CanvasActivity extends Activity {
                 clipView = new ClipView(getResources().getDrawable(R.mipmap.avft),
                         getResources().getDrawable(R.mipmap.avft_active));
                 mImageView.setImageDrawable(clipView);
-                initAnim();
+                startClipAnim();
                 break;
             case ViewTag.CANVAS_BUBBLE:
                 mBubbleView.setVisibility(View.VISIBLE);
@@ -70,12 +76,14 @@ public class CanvasActivity extends Activity {
         }
     }
 
-    private void initAnim() {
-        ValueAnimator valueAnimator = new ValueAnimator();
+    ValueAnimator valueAnimator;
+
+    private void startClipAnim() {
+        valueAnimator = new ValueAnimator();
         valueAnimator.setIntValues(0, 10000);
         valueAnimator.setInterpolator(new LinearInterpolator());
         valueAnimator.setDuration(5000);
-        valueAnimator.setRepeatCount(Integer.MAX_VALUE);
+        valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
         valueAnimator.setRepeatMode(ValueAnimator.REVERSE);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -85,6 +93,20 @@ public class CanvasActivity extends Activity {
             }
         });
         valueAnimator.start();
+    }
+
+    private void cancelClipAnim() {
+        if (valueAnimator != null) {
+            valueAnimator.cancel();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mSearchView.cancelAnim();
+        mSearchView2.cancelAnim();
+        cancelClipAnim();
     }
 
     public static void start(Context context, String position) {

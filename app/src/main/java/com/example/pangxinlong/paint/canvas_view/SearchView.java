@@ -32,8 +32,7 @@ public class SearchView extends View {
         mPaint.setColor(Color.WHITE);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(5);
-        setLayerType(LAYER_TYPE_HARDWARE, null
-        );
+        setLayerType(LAYER_TYPE_HARDWARE, null);
     }
 
     private int dx = 0;
@@ -44,9 +43,9 @@ public class SearchView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawColor(Color.GREEN);
-        if (oldProgress<progress) {
+        if (oldProgress < progress) {
             canvas.translate(dx++, 0);
-        }else {
+        } else {
             canvas.translate(dx--, 0);
         }
 
@@ -90,13 +89,14 @@ public class SearchView extends View {
         oldProgress = progress;
     }
 
+    ValueAnimator mValueAnimator;
 
     public void startAnim() {
-        ValueAnimator mValueAnimator = new ValueAnimator();
+        mValueAnimator = new ValueAnimator();
 
         mValueAnimator.setFloatValues(0, 1);
         mValueAnimator.setDuration(1000);
-        mValueAnimator.setRepeatCount(Integer.MAX_VALUE);
+        mValueAnimator.setRepeatCount(ValueAnimator.INFINITE);
         mValueAnimator.setRepeatMode(ValueAnimator.REVERSE);
         mValueAnimator.setInterpolator(new LinearInterpolator());
         mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -107,6 +107,12 @@ public class SearchView extends View {
             }
         });
         mValueAnimator.start();
+    }
+
+    public void cancelAnim() {
+        if (mValueAnimator != null) {
+            mValueAnimator.cancel();
+        }
     }
 
 }

@@ -7,25 +7,34 @@
     <com.example.pangxinlong.paint.canvas_view.SearchView
             android:id="@+id/canvas_search"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"/>
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:visibility="gone" />
+
+    <com.example.pangxinlong.paint.canvas_view.SearchView2
+            android:id="@+id/canvas_search2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:visibility="gone" />
 
     <!--<com.example.pangxinlong.paint.canvas_view.ClipView-->
-            <!--android:id="@+id/canvas_clip"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:visibility="gone"/>-->
+    <!--android:id="@+id/canvas_clip"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:visibility="gone"/>-->
 
     <ImageView
-        android:id="@+id/iv_clip"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"/>
+            android:id="@+id/iv_clip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
 
     <com.example.pangxinlong.paint.canvas_view.BubbleView
             android:id="@+id/canvas_bubble"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
 
 
 </LinearLayout>
