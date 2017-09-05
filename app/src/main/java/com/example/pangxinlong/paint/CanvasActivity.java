@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
@@ -19,7 +20,7 @@ import android.widget.ImageView;
  * Created by pangxinlong on 2017/9/1.
  */
 
-public class CanvasActivity extends Activity {
+public class CanvasActivity extends AppCompatActivity {
 
     private SearchView mSearchView;
 
