@@ -84,24 +84,19 @@ public class SearchView2 extends View {
             }
         } else {
             //loading
-
+            canvas.save();
+            canvas.rotate(45,getWidth() / 2,getHeight() / 2);
             mPath.addCircle(getWidth() / 2, getHeight() / 2, loadingRadius, Path.Direction.CW);
             mPathMeasure.setPath(mPath, true);
             length = mPathMeasure.getLength();
             Path path = new Path();
             float start = loadingProgress * length;
-//            start+=length/8f;//起始点从45度开始
-//            if (start > length) {
-//                start -= length;
-//            }
-            Log.e("pxl===start", start + "");
-//            if (start <= length/8f-20 || start > length/8f) {
             boolean b = mPathMeasure.getSegment(start, start + 20, path, true);
             if (b) {
                 canvas.drawPath(path, mPaint);
             }
+            canvas.restore();
         }
-//        }
     }
 
     ValueAnimator mValueAnimator;
