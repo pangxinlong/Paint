@@ -36,5 +36,9 @@
             android:layout_height="match_parent"
             android:visibility="gone"/>
 
-
+    <com.example.pangxinlong.paint.svg_view.TaiwanMapView
+            android:id="@+id/svg_taiwan_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
 </LinearLayout>

@@ -9,6 +9,7 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary=true //必须使用v7 23.2以上
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

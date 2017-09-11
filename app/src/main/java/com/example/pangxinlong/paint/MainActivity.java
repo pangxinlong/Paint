@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         dataList.add(ViewTag.CANVAS_SEARCH);
         dataList.add(ViewTag.CANVAS_CLIP);
         dataList.add(ViewTag.CANVAS_BUBBLE);
+        dataList.add(ViewTag.SVG_TAIWAN_MAP);
     }
 
     private void setListener() {

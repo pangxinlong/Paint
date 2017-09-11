@@ -4,6 +4,7 @@ import com.example.pangxinlong.paint.canvas_view.BubbleView;
 import com.example.pangxinlong.paint.canvas_view.ClipView;
 import com.example.pangxinlong.paint.canvas_view.SearchView;
 import com.example.pangxinlong.paint.canvas_view.SearchView2;
+import com.example.pangxinlong.paint.svg_view.TaiwanMapView;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
@@ -34,6 +35,8 @@ public class CanvasActivity extends AppCompatActivity {
 
     private BubbleView mBubbleView;
 
+    private TaiwanMapView mTaiwanMapView;
+
     private String tag;
 
     @Override
@@ -56,6 +59,7 @@ public class CanvasActivity extends AppCompatActivity {
 //        mClipView = (ClipView) findViewById(R.id.canvas_clip);
         mImageView = (ImageView) findViewById(R.id.iv_clip);
         mBubbleView = (BubbleView) findViewById(R.id.canvas_bubble);
+        mTaiwanMapView = (TaiwanMapView) findViewById(R.id.svg_taiwan_map);
         switch (tag) {
             case ViewTag.CANVAS_SEARCH:
                 mSearchView.setVisibility(View.VISIBLE);
@@ -73,6 +77,9 @@ public class CanvasActivity extends AppCompatActivity {
                 break;
             case ViewTag.CANVAS_BUBBLE:
                 mBubbleView.setVisibility(View.VISIBLE);
+                break;
+            case ViewTag.SVG_TAIWAN_MAP:
+                mTaiwanMapView.setVisibility(View.VISIBLE);
                 break;
         }
     }

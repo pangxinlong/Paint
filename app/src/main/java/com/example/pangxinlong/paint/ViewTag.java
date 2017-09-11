@@ -26,4 +26,6 @@ public class ViewTag {
 
     public static final String CANVAS_BUBBLE="canvas_Bubble(qq气泡)";//气泡
 
+    public static final String SVG_TAIWAN_MAP="svg_taiwan_map";
+
 }
