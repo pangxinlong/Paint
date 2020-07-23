@@ -28,4 +28,6 @@ public class ViewTag {
 
     public static final String SVG_TAIWAN_MAP="svg_taiwan_map";
 
+    public static final String RECYCLE_VIEW="recycle_view吸顶效果";
+
 }

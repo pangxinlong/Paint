@@ -1,10 +1,13 @@
 package com.example.pangxinlong.paint;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.pangxinlong.paint.recycle.RecyclerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,16 +50,32 @@ public class MainActivity extends AppCompatActivity {
         dataList.add(ViewTag.CANVAS_CLIP);
         dataList.add(ViewTag.CANVAS_BUBBLE);
         dataList.add(ViewTag.SVG_TAIWAN_MAP);
+        dataList.add(ViewTag.RECYCLE_VIEW);
     }
 
     private void setListener() {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position < 7) {
-                    PaintActivity.start(MainActivity.this, dataList.get(position));
-                } else {
-                    CanvasActivity.start(MainActivity.this, dataList.get(position));
+                switch (dataList.get(position)) {
+                    case ViewTag.PAINT_MAGNIFIER:
+                    case ViewTag.PAINT_WATER:
+                    case ViewTag.PAINT_RADAR:
+                    case ViewTag.PAINT_TEXT:
+                    case ViewTag.PROGRESSBAR:
+                    case ViewTag.PAINT_ERASER:
+                    case ViewTag.PAINT_SHAVECARD:
+                        PaintActivity.start(MainActivity.this, dataList.get(position));
+                        break;
+                    case ViewTag.CANVAS_SEARCH:
+                    case ViewTag.CANVAS_CLIP:
+                    case ViewTag.CANVAS_BUBBLE:
+                    case ViewTag.SVG_TAIWAN_MAP:
+                        CanvasActivity.start(MainActivity.this, dataList.get(position));
+                        break;
+                    case ViewTag.RECYCLE_VIEW:
+                        RecyclerActivity.start(MainActivity.this);
+                        break;
                 }
             }
         });
